@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using DiariodeSaude;
 
 namespace RegistroDiario;
 

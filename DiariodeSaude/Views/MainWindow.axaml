@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:DiariodeSaude.Views"
+        x:Class="DiariodeSaude.MainWindow"
+        Title="DiariodeSaude">
+
+    <ContentControl x:Name="MainContent">
+        <views:BoasVindasView />
+    </ContentControl>
+
+    <!-- 
+    <StackPanel Margin="20">
+        <Button Content="Abrir Registro Diário" Click="OnRegistroDiarioClick"/>
+        <ContentControl Name="registroDiarioContentControl"/>
+        
+        <Button Content="Ver Histórico de Registros" Click="VerHistoricoClick"/>
+        <ContentControl Name="historicoRegistrosContentControl"/>
+    </StackPanel>
+    -->
+</Window>

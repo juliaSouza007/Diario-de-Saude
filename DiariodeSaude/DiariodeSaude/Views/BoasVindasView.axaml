@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DiariodeSaude.Views.BoasVindasView"
+             Background="#F5F5FF">
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#6A0DAD"/> 
+            <Setter Property="Foreground" Value="White"/> 
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/> 
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/> 
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+    </UserControl.Styles>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
+
+        <TextBlock Text="Diário de Saúde" 
+                   FontSize="36" FontWeight="Bold" 
+                   Foreground="#6A0DAD" 
+                   HorizontalAlignment="Center" 
+                   FontFamily="Arial"/>
+
+        <TextBlock Text="Registre, visualize e analise suas informações diárias sobre saúde." 
+                   FontSize="16" 
+                   Foreground="#6A0DAD" 
+                   HorizontalAlignment="Center" 
+                   TextWrapping="Wrap" 
+                   FontFamily="Segoe UI"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
+            <Button Content="Registro Diário" Click="OnRegistroClick"/>
+            <Button Content="Histórico" Click="OnHistoricoClick"/>
+            <Button Content="Detalhes" Click="OnDetalhesClick"/>
+            <Button Content="Relatórios" Click="OnRelatoriosClick"/>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

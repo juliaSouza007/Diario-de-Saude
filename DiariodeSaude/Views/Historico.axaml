@@ -45,7 +45,28 @@
                 <DataGrid ItemsSource="{Binding Registros}" 
                           AutoGenerateColumns="False"
                           IsReadOnly="True"
-                          CanUserSortColumns="True">
+                          CanUserSortColumns="True"
+                          Background="#F5F5FF"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="All">
+
+                    <DataGrid.Styles>
+                        <!-- Estilo para as células -->
+                        <Style Selector="DataGridCell">
+                            <Setter Property="Foreground" Value="#6A0DAD"/>
+                            <Setter Property="FontFamily" Value="Arial"/>
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+
+                        <!-- Estilo para os cabeçalhos -->
+                        <Style Selector="DataGridColumnHeader">
+                            <Setter Property="Foreground" Value="#6A0DAD"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="FontFamily" Value="Arial"/>
+                        </Style>
+                    </DataGrid.Styles>
+
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                         <DataGridTextColumn Header="Qualidade do Sono" Binding="{Binding Descricao}" />

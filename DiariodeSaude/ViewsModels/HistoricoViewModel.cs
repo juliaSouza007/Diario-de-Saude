@@ -8,9 +8,9 @@ namespace DiariodeSaude.ViewsModels
 {
     public class HistoricoViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<QualidadeSono> _registros = new();
+        private ObservableCollection<RegistroCompletoDTO> _registros = new();
 
-        public ObservableCollection<QualidadeSono> Registros
+        public ObservableCollection<RegistroCompletoDTO> Registros
         {
             get => _registros;
             set
@@ -29,20 +29,15 @@ namespace DiariodeSaude.ViewsModels
 
         public async Task CarregarRegistrosAsync()
         {
-            Console.WriteLine(">>> Entrou em CarregarRegistrosAsync");
-
             try
             {
-                var sonoLinq = new SonoLinq();
-                var lista = await sonoLinq.ObterQualidadeSonoAsync();
+                var registroLinq = new RegistroDiarioLinq();
+                var lista = await registroLinq.ObterRegistrosCompletosAsync();
 
-                Console.WriteLine($">>> Registros carregados: {lista.Count}");
-
-                Registros = new ObservableCollection<QualidadeSono>(lista);
+                Registros = new ObservableCollection<RegistroCompletoDTO>(lista);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(">>> ERRO AO CARREGAR REGISTROS:");
                 Console.WriteLine(ex.Message);
             }
         }

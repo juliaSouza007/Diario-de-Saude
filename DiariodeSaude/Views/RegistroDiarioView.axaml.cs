@@ -20,17 +20,13 @@ public partial class RegistroDiarioView : UserControl
     {
          InitializeComponent();
     }
+
     private void OnVoltarClick(object? sender, RoutedEventArgs e)
     {
         if (VisualRoot is MainWindow mainWindow)
         {
             mainWindow.NavegarPara(new BoasVindasView());
         }
-    }
-
-    private void OnCancelarClick(object? sender, RoutedEventArgs e)
-    {
-        LimpaCampos();
     }
     
     private async void OnSalvarClick(object? sender, RoutedEventArgs e)
@@ -91,7 +87,7 @@ public partial class RegistroDiarioView : UserControl
 
             var novoRegistro = new RegistroDiario
             {
-                Data = DateTime.Now,
+                Data = DateTime.Now.Date,
                 HumorId = humorId,
                 SonoId = sonoId,
                 AlimentacaoId = alimentacaoId,

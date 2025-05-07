@@ -47,15 +47,16 @@
                           IsReadOnly="True"
                           CanUserSortColumns="True"
                           Background="#F5F5FF"
-                          GridLinesVisibility="Horizontal"
+                          GridLinesVisibility="All"
                           HeadersVisibility="All">
 
                     <DataGrid.Styles>
                         <!-- Estilo para as células -->
                         <Style Selector="DataGridCell">
-                            <Setter Property="Foreground" Value="#6A0DAD"/>
+                            <Setter Property="Foreground" Value="#6A0DAE"/>
                             <Setter Property="FontFamily" Value="Arial"/>
                             <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Background" Value="#EFEAFF"/>
                         </Style>
 
                         <!-- Estilo para os cabeçalhos -->
@@ -64,12 +65,17 @@
                             <Setter Property="FontWeight" Value="Bold"/>
                             <Setter Property="FontSize" Value="15"/>
                             <Setter Property="FontFamily" Value="Arial"/>
+                            <Setter Property="Background" Value="#D8B4F8"/>
                         </Style>
                     </DataGrid.Styles>
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="Qualidade do Sono" Binding="{Binding Descricao}" />
+                        <DataGridTextColumn Header="Data" Binding="{Binding Data}" />
+                        <DataGridTextColumn Header="Humor" Binding="{Binding Humor}" />
+                        <DataGridTextColumn Header="Sono" Binding="{Binding Sono}" />
+                        <DataGridTextColumn Header="Alimentação" Binding="{Binding Alimentacao}" />
+                        <DataGridTextColumn Header="Atividade Física" Binding="{Binding Atividade}" />
+                        <DataGridTextColumn Header="Duração (min)" Binding="{Binding Tempo}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

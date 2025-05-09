@@ -48,5 +48,12 @@ public class RegistroDiarioLinq
         return await query.ToListAsync();
     }
 
+    //----------------HEYCHYYYYY------------------
+    public async Task AtualizarRegistroDiarioAsync(RegistroDiario registro)
+    {
+        using (var db = new BD())
+        {
+            await db.UpdateAsync(registro);
+        }
+    }
 }
-

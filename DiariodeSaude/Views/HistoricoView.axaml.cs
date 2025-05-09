@@ -11,19 +11,14 @@ namespace DiariodeSaude.Views
 
         public HistoricoView()
         {
-            Console.WriteLine(">>> HistoricoView: CONSTRUTOR chamado");
-
             InitializeComponent();
 
             _viewModel = new HistoricoViewModel();
-            Console.WriteLine(">>> HistoricoViewModel instanciado");
 
             DataContext = _viewModel;
 
             this.AttachedToVisualTree += async (_, __) =>
             {
-                Console.WriteLine(">>> AttachedToVisualTree acionado");
-
                 await _viewModel.CarregarRegistrosAsync();
             };
         }
@@ -34,6 +29,23 @@ namespace DiariodeSaude.Views
             {
                 mainWindow.NavegarPara(new BoasVindasView());
             }
+        }
+
+        private void EditarRegistro_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is RegistroCompletoDTO registro)
+            {
+                var editarView = new EditarRegistroView(registro); // Passa o registro
+                if (VisualRoot is MainWindow main)
+                {
+                    main.NavegarPara(editarView);
+                }
+            }
+        }
+
+        private void ExcluirRegistro_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            // Ainda não faz nada
         }
     }
 }

@@ -1,106 +1,148 @@
-using System;
-using System.Windows.Input;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Data;
 using DiariodeSaude.ViewsModels;
-using System.Collections.ObjectModel;
+using LinqToDB;
+using System;
+using Avalonia.Media;
+using System.Threading.Tasks;
+using Avalonia.Threading;
 
-namespace DiariodeSaude.ViewModels
+namespace DiariodeSaude.Views;
+
+public partial class EditarRegistroView : UserControl
 {
-    public class EditarRegistroViewModel : ViewModelBase
+    private readonly RegistroDiarioLinq registroDiarioLinq = new RegistroDiarioLinq();
+    private readonly HumorLinq humorLinq = new HumorLinq();
+    private readonly AlimentacaoLinq alimentacaoLinq = new AlimentacaoLinq();
+    private readonly SonoLinq sonoLinq = new SonoLinq();
+    private readonly AtividadeFisicaLinq atividadeFisicaLinq = new AtividadeFisicaLinq();
+
+    private readonly RegistroCompletoDTO registroParaEditar;
+
+    public EditarRegistroView(RegistroCompletoDTO registro)
     {
-        private RegistroCompletoDTO? _registroSelecionado;
+        InitializeComponent();
+        registroParaEditar = registro;
+        PreencherCamposParaEdicao();
+    }
 
-        public RegistroCompletoDTO? RegistroSelecionado
+    private void PreencherCamposParaEdicao()
+    {
+        var humorRadio = this.FindControl<RadioButton>(registroParaEditar.Humor!);
+        if (humorRadio != null)
+            humorRadio.IsChecked = true;
+
+        sonoInput.Text = registroParaEditar.Sono.ToString();
+        alimentacaoInput.Text = registroParaEditar.Alimentacao;
+        atvFisicaInput.Text = registroParaEditar.Atividade;
+        duracaoInput.Text = registroParaEditar.Tempo.ToString();
+    }
+
+    private void OnVoltarClick(object? sender, RoutedEventArgs e)
+    {
+        if (VisualRoot is MainWindow mainWindow)
         {
-            get => _registroSelecionado;
-            set => SetProperty(ref _registroSelecionado, value);
-        }
-
-        private string? _humor;
-        public string? Humor
-        {
-            get => _humor;
-            set => SetProperty(ref _humor, value);
-        }
-
-        private string? _sono;
-        public string? Sono
-        {
-            get => _sono;
-            set => SetProperty(ref _sono, value);
-        }
-
-        private string? _alimentacao;
-        public string? Alimentacao
-        {
-            get => _alimentacao;
-            set => SetProperty(ref _alimentacao, value);
-        }
-
-        private string? _atividadeFisica;
-        public string? AtividadeFisica
-        {
-            get => _atividadeFisica;
-            set => SetProperty(ref _atividadeFisica, value);
-        }
-
-        private string? _tempo;
-        public string? Tempo
-        {
-            get => _tempo;
-            set => SetProperty(ref _tempo, value);
-        }
-
-        private DateTime? _data;
-        public DateTime? Data
-        {
-            get => _data;
-            set => SetProperty(ref _data, value);
-        }
-
-        public EditarRegistroViewModel(RegistroCompletoDTO registro)
-        {
-            RegistroSelecionado = registro;
-            Humor = registro.Humor;
-            Sono = registro.Sono.ToString();
-            Alimentacao = registro.Alimentacao;
-            AtividadeFisica = registro.Atividade;
-            Tempo = registro.Tempo.ToString();
-        }
-
-        public ICommand SalvarCommand => new RelayCommand(Salvar);
-
-        private void Salvar()
-        {
-            if (RegistroSelecionado != null)
-            {
-                // Aqui você atualiza o registro com os valores editados
-                RegistroSelecionado.Humor = Humor;
-                RegistroSelecionado.Sono = int.TryParse(Sono, out var sonoHoras) ? sonoHoras : 0;
-                RegistroSelecionado.Alimentacao = Alimentacao;
-                RegistroSelecionado.Atividade = AtividadeFisica;
-                RegistroSelecionado.Tempo = int.TryParse(Tempo, out var tempoMin) ? tempoMin : 0;
-                RegistroSelecionado.Data = Data;
-            }
+            mainWindow.NavegarPara(new HistoricoView());
         }
     }
 
-    // Classe simples para comandos (substituto de ReactiveCommand)
-    public class RelayCommand : ICommand
+    private async void OnSalvarClick(object? sender, RoutedEventArgs e)
     {
-        private readonly Action _execute;
-        private readonly Func<bool> _canExecute;
-
-        public RelayCommand(Action execute, Func<bool>? canExecute = null)
+        try
         {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute ?? (() => true); // Fornecendo um valor padrão
+            string? descricaoHumor = null;
+            if (this.FindControl<RadioButton>("HumorFeliz")?.IsChecked == true) descricaoHumor = "HumorFeliz";
+            else if (this.FindControl<RadioButton>("HumorBom")?.IsChecked == true) descricaoHumor = "HumorBom";
+            else if (this.FindControl<RadioButton>("HumorRegular")?.IsChecked == true) descricaoHumor = "HumorRegular";
+            else if (this.FindControl<RadioButton>("HumorRuim")?.IsChecked == true) descricaoHumor = "HumorRuim";
+            else if (this.FindControl<RadioButton>("HumorPessimo")?.IsChecked == true) descricaoHumor = "HumorPessimo";
+            else if (string.IsNullOrEmpty(descricaoHumor))
+            {
+                MensagemErro("Selecione seu humor.");
+                return;
+            }
+
+            if (!int.TryParse(sonoInput.Text, out var sono) || sono < 0 || sono > 10)
+            {
+                MensagemErro("A qualidade do sono deve estar entre 0 e 10.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(alimentacaoInput.Text))
+            {
+                MensagemErro("Informe como foi sua alimentação.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(atvFisicaInput.Text))
+            {
+                MensagemErro("Informe o tipo de atividade física.");
+                return;
+            }
+
+            if (!int.TryParse(duracaoInput.Text, out var duracao) || duracao < 0)
+            {
+                MensagemErro("Informe uma duração válida para a atividade física.");
+                return;
+            }
+
+            var novoHumor = new Humor { Descricao = descricaoHumor };
+            var humorId = await humorLinq.AdicionarHumorAsync(novoHumor);
+
+            var novoSono = new QualidadeSono { Descricao = sono };
+            var sonoId = await sonoLinq.AdicionarSonoAsync(novoSono);
+
+            var novaAlimentacao = new Alimentacao { Descricao = alimentacaoInput.Text.Trim() };
+            var alimentacaoId = await alimentacaoLinq.AdicionarAlimentacaoAsync(novaAlimentacao);
+
+            var novaAtividadeFisca = new AtividadeFisica
+            {
+                TipoAtividade = atvFisicaInput.Text.Trim(),
+                DuracaoMinutos = duracao
+            };
+            var atividadeFisicaId = await atividadeFisicaLinq.AdicionarAtividadeFisicaAsync(novaAtividadeFisca);
+
+            var registroAtualizado = new RegistroDiario
+            {
+                Id = registroParaEditar.RegistroId,
+                HumorId = humorId,
+                SonoId = sonoId,
+                AlimentacaoId = alimentacaoId,
+                AtividadeFisicaId = atividadeFisicaId
+            };
+            await registroDiarioLinq.AtualizarRegistroDiarioAsync(registroAtualizado);
+
+            MensagemSucesso("Registro atualizado com sucesso!");
         }
+        catch (Exception ex)
+        {
+            MensagemErro($"Erro ao salvar: {ex.Message}");
+        }
+    }
 
-        public bool CanExecute(object? parameter) => _canExecute == null || _canExecute();
+    private async void MensagemErro(string mensagem)
+    {
+        mensagemStatus.Text = mensagem;
+        mensagemStatus.Foreground = Brushes.Red;
+        mensagemStatus.IsVisible = true;
+        await OcultarMensagemDepoisDeDelay();
+    }
 
-        public void Execute(object? parameter) => _execute();
+    private async void MensagemSucesso(string mensagem)
+    {
+        mensagemStatus.Text = mensagem;
+        mensagemStatus.Foreground = Brushes.Green;
+        mensagemStatus.IsVisible = true;
+        await OcultarMensagemDepoisDeDelay();
+    }
 
-        public event EventHandler? CanExecuteChanged;
+    private async Task OcultarMensagemDepoisDeDelay()
+    {
+        await Task.Delay(3000);
+        await Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            mensagemStatus.IsVisible = false;
+        });
     }
 }

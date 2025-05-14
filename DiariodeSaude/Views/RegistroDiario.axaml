@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:avaloniaControls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
              x:Class="DiariodeSaude.Views.RegistroDiarioView"
              Background="#F5F5FF">
   <UserControl.Styles>
@@ -78,10 +79,13 @@
 
       </StackPanel>
 
-      <TextBlock Text="Qualidade do Sono (0-10)" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="6">
-        <TextBox x:Name="sonoInput" Background="#F8F8F8" Width="60" Watermark="0" BorderBrush="#E0E0E0" CornerRadius="8"/>
+      <TextBlock Text="Qualidade do Sono" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20">
+          <RadioButton x:Name="SonoBom" Content="Boa" GroupName="sono" FontSize="16" />
+          <RadioButton x:Name="SonoMedio" Content="Média" GroupName="sono" FontSize="16" />
+          <RadioButton x:Name="SonoRuim" Content="Ruim" GroupName="sono" FontSize="16" />
       </StackPanel>
+
 
       <TextBlock Text="Alimentação" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
       <TextBox x:Name="alimentacaoInput"
@@ -99,7 +103,13 @@
               BorderBrush="#E0E0E0"
               CornerRadius="8"/>
       <StackPanel Orientation="Horizontal" Spacing="8">
-        <TextBox x:Name="duracaoInput" Width="60" Watermark="0" Background="#F8F8F8"  BorderBrush="#E0E0E0" CornerRadius="8"/>
+        <avaloniaControls:NumericUpDown x:Name="duracaoInput" 
+                                        Width="120"
+                                        Minimum="0"
+                                        Increment="1"
+                                        Background="#F8F8F8"  
+                                        BorderBrush="#E0E0E0" 
+                                        CornerRadius="8"/>
         <TextBlock Text="minutos de exercício" VerticalAlignment="Center" FontSize="15" Foreground="#6A0DAD" />
       </StackPanel>
 

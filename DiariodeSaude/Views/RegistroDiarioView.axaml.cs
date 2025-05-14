@@ -20,7 +20,6 @@ public partial class RegistroDiarioView : UserControl
     {
          InitializeComponent();
     }
-
     private void OnVoltarClick(object? sender, RoutedEventArgs e)
     {
         if (VisualRoot is MainWindow mainWindow)
@@ -45,13 +44,17 @@ public partial class RegistroDiarioView : UserControl
                 return;
             }
           
-            if (!int.TryParse(sonoInput.Text, out var sono) || sono < 0 || sono > 10)
+            string? descricaoSono = null;
+            if (this.FindControl<RadioButton>("SonoBom")?.IsChecked == true) descricaoSono = "Boa";
+            else if (this.FindControl<RadioButton>("SonoMedio")?.IsChecked == true) descricaoSono = "Média";
+            else if (this.FindControl<RadioButton>("SonoRuim")?.IsChecked == true) descricaoSono = "Ruim";
+            else if (string.IsNullOrEmpty(descricaoSono))
             {
-                MensagemErro("A qualidade do sono deve estar entre 0 e 10.");
+                MensagemErro("Selecione a qualidade do sono.");
                 return;
             }
 
-             if (string.IsNullOrWhiteSpace(alimentacaoInput.Text))
+            if (string.IsNullOrWhiteSpace(alimentacaoInput.Text))
             {
                 MensagemErro("Informe como foi sua alimentação.");
                 return;
@@ -63,7 +66,8 @@ public partial class RegistroDiarioView : UserControl
                 return;
             }
 
-            if (!int.TryParse(duracaoInput.Text, out var duracao) || duracao < 0)
+            int duracao = this.FindControl<NumericUpDown>("duracaoInput")?.Value is null ? 0 : (int)this.FindControl<NumericUpDown>("duracaoInput").Value;
+            if (duracao <= 0)
             {
                 MensagemErro("Informe uma duração válida para a atividade física.");
                 return;
@@ -72,7 +76,7 @@ public partial class RegistroDiarioView : UserControl
             var novoHumor = new Humor { Descricao = descricaoHumor };
             var humorId = await humorLinq.AdicionarHumorAsync(novoHumor);
 
-            var novoSono = new QualidadeSono { Descricao = sono };
+            var novoSono = new QualidadeSono { Descricao = descricaoSono };
             var sonoId = await sonoLinq.AdicionarSonoAsync(novoSono);
 
             var novaAlimentacao = new Alimentacao { Descricao = alimentacaoInput.Text.Trim() };
@@ -107,12 +111,11 @@ public partial class RegistroDiarioView : UserControl
 
     private void LimpaCampos() 
     {
-        sonoInput.Text = "";
         alimentacaoInput.Text = "";
         atvFisicaInput.Text = "";
-        duracaoInput.Text = "";
+        this.FindControl<NumericUpDown>("duracaoInput").Value = 0;
 
-        foreach (var rb in new[] { "HumorFeliz", "HumorBom", "HumorRegular", "HumorRuim", "HumorPessimo" })
+        foreach (var rb in new[] { "HumorFeliz", "HumorBom", "HumorRegular", "HumorRuim", "HumorPessimo", "SonoBom", "SonoMedio", "SonoRuim" })
         {
             var radio = this.FindControl<RadioButton>(rb);
             if (radio != null) radio.IsChecked = false;

@@ -5,7 +5,7 @@ using System.Linq;
 public class QualidadeSono
 {
     public int Id { get; set; }
-    public int Descricao { get; set; }
+    public string Descricao { get; set; }
 
     public static IEnumerable<QualidadeSono> LerQualidadeSono(string caminhoArquivo)
     {

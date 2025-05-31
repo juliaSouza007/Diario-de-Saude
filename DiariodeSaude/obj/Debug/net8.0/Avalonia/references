@@ -25,6 +25,7 @@ C:\Users\patem\.nuget\packages\avalonia.win32\11.3.0\lib\net8.0\Avalonia.Win32.d
 C:\Users\patem\.nuget\packages\avalonia.x11\11.3.0\lib\net8.0\Avalonia.X11.dll
 C:\Users\patem\.nuget\packages\consoledump\0.7.0\lib\netstandard2.0\ConsoleDump.dll
 C:\Users\patem\.nuget\packages\dialoghost.avalonia\0.8.1\lib\netstandard2.0\DialogHost.Avalonia.dll
+C:\Users\patem\.nuget\packages\dynamicdata\9.1.2\lib\net8.0\DynamicData.dll
 C:\Users\patem\.nuget\packages\harfbuzzsharp\7.3.0.3\lib\net6.0\HarfBuzzSharp.dll
 C:\Users\patem\.nuget\packages\linq2db\5.4.1\lib\net6.0\linq2db.dll
 C:\Users\patem\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
@@ -37,7 +38,9 @@ C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\Micro
 C:\Users\patem\.nuget\packages\messagebox.avalonia\3.2.0\lib\netstandard2.0\MsBox.Avalonia.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\mscorlib.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\netstandard.dll
+C:\Users\patem\.nuget\packages\reactiveui\20.2.45\lib\net8.0\ReactiveUI.dll
 C:\Users\patem\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
+C:\Users\patem\.nuget\packages\splat\15.3.1\lib\net8.0\Splat.dll
 C:\Users\patem\.nuget\packages\sqlitepclraw.bundle_e_sqlite3\2.1.10\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\patem\.nuget\packages\sqlitepclraw.core\2.1.10\lib\netstandard2.0\SQLitePCLRaw.core.dll
 C:\Users\patem\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.1.10\lib\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -92,7 +95,7 @@ C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\Syste
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.FileSystem.Watcher.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.IsolatedStorage.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.MemoryMappedFiles.dll
-C:\Users\patem\.nuget\packages\system.io.pipelines\8.0.0\lib\net8.0\System.IO.Pipelines.dll
+C:\Users\patem\.nuget\packages\system.io.pipelines\9.0.2\lib\net8.0\System.IO.Pipelines.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.Pipes.AccessControl.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.Pipes.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.IO.UnmanagedMemoryStream.dll
@@ -123,6 +126,7 @@ C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\Syste
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Numerics.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Numerics.Vectors.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.ObjectModel.dll
+C:\Users\patem\.nuget\packages\system.reactive\6.0.1\lib\net6.0\System.Reactive.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Reflection.DispatchProxy.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Reflection.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Reflection.Emit.dll
@@ -170,8 +174,8 @@ C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\Syste
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.Encoding.CodePages.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.Encoding.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.Encoding.Extensions.dll
-C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.Encodings.Web.dll
-C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.Json.dll
+C:\Users\patem\.nuget\packages\system.text.encodings.web\9.0.2\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\patem\.nuget\packages\system.text.json\9.0.2\lib\net8.0\System.Text.Json.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Text.RegularExpressions.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Threading.Channels.dll
 C:\Users\patem\.nuget\packages\microsoft.netcore.app.ref\8.0.13\ref\net8.0\System.Threading.dll

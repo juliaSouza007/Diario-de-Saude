@@ -25,7 +25,6 @@ public class SonoLinq
         return registros;
     }
 
-
     public async Task<int> AdicionarSonoAsync(QualidadeSono sono)
     {
         using var db = new BD();

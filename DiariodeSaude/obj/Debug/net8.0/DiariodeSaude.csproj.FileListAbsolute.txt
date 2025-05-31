@@ -100,3 +100,10 @@ C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\obj\Debug\
 C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\obj\Debug\net8.0\DiariodeSaude.pdb
 C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\obj\Debug\net8.0\DiariodeSaude.genruntimeconfig.cache
 C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\obj\Debug\net8.0\ref\DiariodeSaude.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\DynamicData.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\ReactiveUI.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\Splat.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\System.Reactive.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\patem\OneDrive\Área de Trabalho\DiariodeSaude\DiariodeSaude\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

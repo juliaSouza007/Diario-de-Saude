@@ -48,6 +48,14 @@ public class RegistroDiarioLinq
         return await query.ToListAsync();
     }
 
+    public async Task RemoverRegistroDiarioAsync(int registroId)
+    {
+        using var db = new BD();
+        await db.RegistroDiario
+            .Where(r => r.Id == registroId)
+            .DeleteAsync();
+    }
+
     //----------------HEYCHYYYYY------------------
     public async Task AtualizarRegistroDiarioAsync(RegistroDiario registro)
     {

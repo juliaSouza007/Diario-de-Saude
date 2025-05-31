@@ -5,7 +5,7 @@ using System.Linq;
 public class QualidadeSono
 {
     public int Id { get; set; }
-    public string Descricao { get; set; }
+    public required string Descricao { get; set; }
 
     public static IEnumerable<QualidadeSono> LerQualidadeSono(string caminhoArquivo)
     {
@@ -17,7 +17,7 @@ public class QualidadeSono
             var sono = new QualidadeSono
             {
                 Id = int.Parse(campos[0]),
-                Descricao = int.TryParse(campos[1], out var descricao) ? descricao : 0,
+                Descricao = campos[1],
             };
 
 

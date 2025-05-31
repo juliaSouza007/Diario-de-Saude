@@ -66,7 +66,7 @@ public partial class RegistroDiarioView : UserControl
                 return;
             }
 
-            int duracao = this.FindControl<NumericUpDown>("duracaoInput")?.Value is null ? 0 : (int)this.FindControl<NumericUpDown>("duracaoInput").Value;
+            int duracao = (int)(this.FindControl<NumericUpDown>("duracaoInput")?.Value ?? 0);
             if (duracao <= 0)
             {
                 MensagemErro("Informe uma duração válida para a atividade física.");
@@ -113,7 +113,9 @@ public partial class RegistroDiarioView : UserControl
     {
         alimentacaoInput.Text = "";
         atvFisicaInput.Text = "";
-        this.FindControl<NumericUpDown>("duracaoInput").Value = 0;
+        var duracaoControl = this.FindControl<NumericUpDown>("duracaoInput");
+        if (duracaoControl is not null) duracaoControl.Value = 0;
+
 
         foreach (var rb in new[] { "HumorFeliz", "HumorBom", "HumorRegular", "HumorRuim", "HumorPessimo", "SonoBom", "SonoMedio", "SonoRuim" })
         {

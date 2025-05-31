@@ -44,7 +44,7 @@ namespace DiariodeSaude.ViewsModels
 
         public List<string> OpcoesPeriodo { get; } = new()
         {
-            "Todos os registros", // NOVO
+            "Todos os registros",
             "Última semana",
             "Último mês",
             "Último ano"

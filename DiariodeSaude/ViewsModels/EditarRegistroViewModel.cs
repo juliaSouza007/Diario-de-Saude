@@ -62,7 +62,7 @@ namespace DiariodeSaude.ViewModels
         {
             RegistroSelecionado = registro;
             Humor = registro.Humor;
-            Sono = registro.Sono.ToString();
+            Sono = registro.Sono;
             Alimentacao = registro.Alimentacao;
             AtividadeFisica = registro.Atividade;
             Tempo = registro.Tempo.ToString();
@@ -76,7 +76,7 @@ namespace DiariodeSaude.ViewModels
             {
                 // Aqui você atualiza o registro com os valores editados
                 RegistroSelecionado.Humor = Humor;
-                RegistroSelecionado.Sono = int.TryParse(Sono, out var sonoHoras) ? sonoHoras : 0;
+                RegistroSelecionado.Sono = Sono;
                 RegistroSelecionado.Alimentacao = Alimentacao;
                 RegistroSelecionado.Atividade = AtividadeFisica;
                 RegistroSelecionado.Tempo = int.TryParse(Tempo, out var tempoMin) ? tempoMin : 0;

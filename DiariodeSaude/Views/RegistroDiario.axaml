@@ -19,6 +19,52 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
+
+    <Style Selector="TextBox">
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#E0E0E0"/>
+      <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+
+    <Style Selector="TextBox:focus">
+      <Setter Property="Background" Value="#F5F5FF"/>
+      <Setter Property="BorderBrush" Value="#6A0DAD"/>
+    </Style>
+
+    <Style Selector="RadioButton">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="CornerRadius" Value="8"/>
+      <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <Style Selector="RadioButton:checked">
+      <Setter Property="Background" Value="#F5F5FF"/>
+      <Setter Property="BorderBrush" Value="#6A0DAD"/>
+    </Style>
+
+
+
+    <Style Selector="NumericUpDown">
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#E0E0E0"/>
+      <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+
+    <Style Selector="NumericUpDown:focus">
+      <Setter Property="Background" Value="#F5F5FF"/>
+      <Setter Property="BorderBrush" Value="#6A0DAD"/>
+    </Style>
+
+    <Style Selector="NumericUpDown:Button">
+      <Setter Property="Background" Value="Black"/>
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="BorderBrush" Value="#E0E0E0"/>
+      <Setter Property="Width" Value="20"/>
+      <Setter Property="Height" Value="20"/>
+    </Style>
   </UserControl.Styles>
 
   <ScrollViewer>
@@ -42,35 +88,35 @@
       <TextBlock Text="Como está seu humor hoje?" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
         
-        <RadioButton x:Name="HumorFeliz" GroupName="humor" Margin="0,0,10,0">
+        <RadioButton x:Name="HumorFeliz" GroupName="humor" Margin="0,0,10,0" Foreground="Black">
         <StackPanel HorizontalAlignment="Center">
           <TextBlock Text="😄" FontSize="25" HorizontalAlignment="Center"/>
           <TextBlock Text="Ótimo" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
       </RadioButton>
 
-      <RadioButton x:Name="HumorBom" GroupName="humor" Margin="0,0,10,0">
+      <RadioButton x:Name="HumorBom" GroupName="humor" Margin="0,0,10,0" Foreground="Black">
         <StackPanel HorizontalAlignment="Center">
           <TextBlock Text="🙂" FontSize="25" HorizontalAlignment="Center"/>
           <TextBlock Text="Bom" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
       </RadioButton>
 
-      <RadioButton x:Name="HumorRegular" GroupName="humor" Margin="0,0,10,0">
+      <RadioButton x:Name="HumorRegular" GroupName="humor" Margin="0,0,10,0" Foreground="Black">
         <StackPanel HorizontalAlignment="Center">
           <TextBlock Text="😐" FontSize="25" HorizontalAlignment="Center"/>
           <TextBlock Text="Regular" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
       </RadioButton>
 
-      <RadioButton x:Name="HumorRuim" GroupName="humor" Margin="0,0,10,0">
+      <RadioButton x:Name="HumorRuim" GroupName="humor" Margin="0,0,10,0" Foreground="Black">
         <StackPanel HorizontalAlignment="Center">
           <TextBlock Text="🙁" FontSize="25" HorizontalAlignment="Center"/>
           <TextBlock Text="Ruim" FontSize="15" HorizontalAlignment="Center"/>
         </StackPanel>
       </RadioButton>
 
-      <RadioButton x:Name="HumorPessimo" GroupName="humor" Margin="0,0,10,0">
+      <RadioButton x:Name="HumorPessimo" GroupName="humor" Margin="0,0,10,0" Foreground="Black">
         <StackPanel HorizontalAlignment="Center">
           <TextBlock Text="😞" FontSize="25" HorizontalAlignment="Center"/>
           <TextBlock Text="Péssimo" FontSize="15" HorizontalAlignment="Center"/>
@@ -81,35 +127,25 @@
 
       <TextBlock Text="Qualidade do Sono" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20">
-          <RadioButton x:Name="SonoBom" Content="Boa" GroupName="sono" FontSize="16" />
-          <RadioButton x:Name="SonoMedio" Content="Média" GroupName="sono" FontSize="16" />
-          <RadioButton x:Name="SonoRuim" Content="Ruim" GroupName="sono" FontSize="16" />
+          <RadioButton x:Name="SonoBom" Content="Boa" GroupName="sono" FontSize="16" Foreground="Black"/>
+          <RadioButton x:Name="SonoMedio" Content="Média" GroupName="sono" FontSize="16" Foreground="Black"/>
+          <RadioButton x:Name="SonoRuim" Content="Ruim" GroupName="sono" FontSize="16" Foreground="Black"/>
       </StackPanel>
-
 
       <TextBlock Text="Alimentação" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
       <TextBox x:Name="alimentacaoInput"
               Watermark="Como foi sua alimentação hoje?"
-              Height="80"
-              Background="#F8F8F8"
-              BorderBrush="#E0E0E0"
-              CornerRadius="8"/>
+              Height="80"/>
 
       <TextBlock Text="Atividade Física" FontWeight="Bold" FontSize="20" Foreground="#6A0DAD" />
       <TextBox x:Name="atvFisicaInput"
               Watermark="Tipo de atividade física"
-              Height="40"
-              Background="#F8F8F8"
-              BorderBrush="#E0E0E0"
-              CornerRadius="8"/>
+              Height="40"/>
       <StackPanel Orientation="Horizontal" Spacing="8">
         <avaloniaControls:NumericUpDown x:Name="duracaoInput" 
                                         Width="120"
                                         Minimum="0"
-                                        Increment="1"
-                                        Background="#F8F8F8"  
-                                        BorderBrush="#E0E0E0" 
-                                        CornerRadius="8"/>
+                                        Increment="1"/>
         <TextBlock Text="minutos de exercício" VerticalAlignment="Center" FontSize="15" Foreground="#6A0DAD" />
       </StackPanel>
 

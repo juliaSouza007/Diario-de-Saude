@@ -12,6 +12,7 @@ namespace DiariodeSaude.Views
         public HistoricoView()
         {
             InitializeComponent();
+            //RegistrosTeste.InserirRegistros();
 
             _viewModel = new HistoricoViewModel();
 
@@ -31,7 +32,7 @@ namespace DiariodeSaude.Views
             }
         }
 
-        private void EditarRegistro_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void EditarRegistroClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (sender is Button btn && btn.Tag is RegistroCompletoDTO registro)
             {
@@ -43,9 +44,22 @@ namespace DiariodeSaude.Views
             }
         }
 
-        private void ExcluirRegistro_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void ExcluirRegistroClick(object? sender, RoutedEventArgs e)
         {
-            // Ainda não faz nada
-        }
+            if (sender is Button btn && btn.Tag is RegistroCompletoDTO registro)
+            {
+                try
+                {
+                    var registroDiarioLinq = new RegistroDiarioLinq();
+                    await registroDiarioLinq.RemoverRegistroDiarioAsync(registro.RegistroId);
+
+                    await _viewModel.CarregarRegistrosAsync(); // Atualiza a lista na tela
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao excluir: {ex.Message}");
+                }
+            }
+        }       
     }
 }

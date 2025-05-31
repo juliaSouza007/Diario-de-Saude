@@ -48,87 +48,84 @@
         </Style>
     </UserControl.Styles>
 
-    <StackPanel>
-        <ScrollViewer>
-            <StackPanel Margin="20" Spacing="18">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button Content="←" 
-                            Width="40" Height="40"
-                            Foreground="#6A0DAD" 
-                            Background="Transparent" BorderBrush="Transparent"
-                            FontSize="20"
-                            Click="OnVoltarClick"/>
-                    <TextBlock Text="Histórico de Registros"
-                              FontSize="25" FontWeight="Bold" 
-                              Foreground="#6A0DAD" 
-                              HorizontalAlignment="Center" 
-                              FontFamily="Arial"
-                              Margin="10,0,0,0" 
-                              VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <!-- Filtros de período -->
-                <WrapPanel VerticalAlignment="Top">
-                    <TextBlock Text="Período:" VerticalAlignment="Center" FontWeight="Bold" Foreground="#6A0DAD"/>
-                    <ComboBox ItemsSource="{Binding OpcoesPeriodo}" SelectedItem="{Binding PeriodoSelecionado}" />
-                </WrapPanel>
-
-                <DataGrid ItemsSource="{Binding RegistrosFiltrados}" 
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserSortColumns="True"
-                          Background="#F5F5FF"
-                          GridLinesVisibility="All"
-                          HeadersVisibility="All">
-
-                    <DataGrid.Styles>
-                        <Style Selector="DataGridCell">
-                            <Setter Property="Foreground" Value="#6A0DAE"/>
-                            <Setter Property="FontFamily" Value="Arial"/>
-                            <Setter Property="FontSize" Value="14"/>
-                            <Setter Property="Background" Value="#EFEAFF"/>
-                        </Style>
-
-                        <Style Selector="DataGridColumnHeader">
-                            <Setter Property="Foreground" Value="#6A0DAD"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="FontSize" Value="15"/>
-                            <Setter Property="FontFamily" Value="Arial"/>
-                            <Setter Property="Background" Value="#D8B4F8"/>
-                        </Style>
-                    </DataGrid.Styles>
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat='dd/MM/yyyy'}" />
-                        <DataGridTextColumn Header="Humor" Binding="{Binding Humor}" />
-                        <DataGridTextColumn Header="Sono" Binding="{Binding Sono}" />
-                        <DataGridTextColumn Header="Alimentação" Binding="{Binding Alimentacao}" />
-                        <DataGridTextColumn Header="Atividade Física" Binding="{Binding Atividade}" />
-                        <DataGridTextColumn Header="Duração (min)" Binding="{Binding Tempo}" />
-                        <DataGridTemplateColumn Header="Editar">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="Editar"
-                                            Background="#D1C4E9"
-                                            Click="EditarRegistro_Click"
-                                            Tag="{Binding}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <DataGridTemplateColumn Header="Excluir">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="Excluir"
-                                            Background="#F8BBD0"
-                                            Click="ExcluirRegistro_Click"
-                                            Tag="{Binding}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="18">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="←" 
+                        Width="40" Height="40"
+                        Foreground="#6A0DAD" 
+                        Background="Transparent" BorderBrush="Transparent"
+                        FontSize="20"
+                        Click="OnVoltarClick"/>
+                <TextBlock Text="Histórico de Registros"
+                          FontSize="25" FontWeight="Bold" 
+                          Foreground="#6A0DAD" 
+                          HorizontalAlignment="Center" 
+                          FontFamily="Arial"
+                          Margin="10,0,0,0" 
+                          VerticalAlignment="Center"/>
             </StackPanel>
-        </ScrollViewer>
-    </StackPanel>
+
+            <!-- Filtros de período -->
+            <WrapPanel VerticalAlignment="Top">
+                <TextBlock Text="Período:" VerticalAlignment="Center" FontWeight="Bold" Foreground="#6A0DAD"/>
+                <ComboBox ItemsSource="{Binding OpcoesPeriodo}" SelectedItem="{Binding PeriodoSelecionado}" />
+            </WrapPanel>
+
+            <DataGrid ItemsSource="{Binding RegistrosFiltrados}" 
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserSortColumns="True"
+                      Background="#F5F5FF"
+                      GridLinesVisibility="All"
+                      HeadersVisibility="All">
+
+            <DataGrid.Styles>
+                <Style Selector="DataGridCell">
+                    <Setter Property="Foreground" Value="#6A0DAE"/>
+                    <Setter Property="FontFamily" Value="Arial"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Background" Value="#EFEAFF"/>
+                </Style>
+
+                <Style Selector="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="#6A0DAD"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontFamily" Value="Arial"/>
+                    <Setter Property="Background" Value="#D8B4F8"/>
+                </Style>
+            </DataGrid.Styles>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat='dd/MM/yyyy'}" />
+                <DataGridTextColumn Header="Humor" Binding="{Binding Humor}" />
+                <DataGridTextColumn Header="Sono" Binding="{Binding Sono}" />
+                <DataGridTextColumn Header="Alimentação" Binding="{Binding Alimentacao}" />
+                <DataGridTextColumn Header="Atividade Física" Binding="{Binding Atividade}" />
+                <DataGridTextColumn Header="Duração (min)" Binding="{Binding Tempo}" />
+                <DataGridTemplateColumn Header="Editar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Editar"
+                                    Background="#D1C4E9"
+                                    Click="EditarRegistroClick"
+                                    Tag="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Excluir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Excluir"
+                                    Background="#F8BBD0"
+                                    Click="ExcluirRegistroClick"
+                                    Tag="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

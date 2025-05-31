@@ -33,7 +33,7 @@ public partial class EditarRegistroView : UserControl
         if (humorRadio != null)
             humorRadio.IsChecked = true;
 
-        sonoInput.Text = registroParaEditar.Sono.ToString();
+        sonoInput.Text = registroParaEditar.Sono;
         alimentacaoInput.Text = registroParaEditar.Alimentacao;
         atvFisicaInput.Text = registroParaEditar.Atividade;
         duracaoInput.Text = registroParaEditar.Tempo.ToString();
@@ -90,7 +90,7 @@ public partial class EditarRegistroView : UserControl
             var novoHumor = new Humor { Descricao = descricaoHumor };
             var humorId = await humorLinq.AdicionarHumorAsync(novoHumor);
 
-            var novoSono = new QualidadeSono { Descricao = sono };
+            var novoSono = new QualidadeSono { Descricao = sono.ToString() };
             var sonoId = await sonoLinq.AdicionarSonoAsync(novoSono);
 
             var novaAlimentacao = new Alimentacao { Descricao = alimentacaoInput.Text.Trim() };
